@@ -1,0 +1,216 @@
+{% include 'trainer/trainer_header.html' %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("/static/img/1245460.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #ffffff;
+        font-family: 'Black Ops One', system-ui;
+        margin-top: 40px;
+    }
+
+    form {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: transparent;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+        color: #333333;
+    }
+
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 12px;
+        color: #333333;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #c7d5e0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-bottom: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4e7ab5;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #346192;
+    }
+
+    a {
+        text-decoration: none;
+        color: #4e7ab5;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #346192;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .btn-link {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #4e7ab5;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+/* 
+    .btn-link:hover {
+        background-color: #346192;
+        color: white;
+    } */
+
+    .button-link {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #68b54e;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-link:hover {
+        background-color: #346192;
+        color: white;
+    }
+
+    .button-link1 {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #e33b0c;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-link1:hover {
+        background-color: #346192;
+        color: white;
+    }
+
+    .classic-dropdown {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .classic-dropdown select {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        box-sizing: border-box;
+    }
+
+    .classic-button {
+        background-color: #4e7ab5;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .classic-button:hover {
+        background-color: #346192;
+        color: white;
+    }
+</style>
+
+<h1>Circuitsub</h1>
+<form action="" method="post">
+    <table>
+        <tr>
+            <th align="center">Circuits :</th>
+            <td>
+                <div class="classic-dropdown">
+                    <select name="circuits">
+                        <option value="">Select Circuits</option>
+                        {% for i in data['circuits'] %}
+                        <option value="{{i['c_id']}}">{{i['c_name']}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th align="center">Workouts :</th>
+            <td>
+                <div class="classic-dropdown">
+                    <select name="workouts">
+                        <option value="">Select Workouts</option>
+                        {% for i in data['workouts'] %}
+                        <option value="{{i['workout_id']}}">{{i['name']}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>Times :</th>
+            <td><input type="text" name="times" placeholder="How Many Times" pattern="[1-9][0-9]{0,1}" required></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><button type="submit" class="classic-button" name="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+
+{% include 'footer.html' %}

@@ -1,0 +1,68 @@
+{% include 'public/public_header.html'  %}
+
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  .login-container {
+    font-family: Arial, sans-serif;
+    background-image: url("/static/img/805233.jpg");
+    background-size: cover; /* Ensure the background image covers the entire container */
+    background-repeat: no-repeat;
+    width: 100vw; /* Set width to 100vw to cover the entire viewport width */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust opacity if necessary */
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Adjust the maximum width as needed */
+    width: 100%;
+  }
+  .login-box form {
+    margin-top: 20px;
+  }
+  .login-box input[type="text"],
+  .login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .login-box input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #e80686;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+
+
+<section class="login-container">
+  <div class="login-box">
+    <h1 style="font-family: 'Black Ops One', system-ui;">LOGIN</h1>
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password">
+      </div>
+      <input type="submit" name="submit" value="Submit">
+    </form>
+  </div>
+</section>
+
+<!-- {% include 'footer.html' %} -->

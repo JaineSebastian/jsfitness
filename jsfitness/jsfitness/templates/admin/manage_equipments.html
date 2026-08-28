@@ -1,0 +1,188 @@
+{% include 'admin/admin_header.html' %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("/static/img/1245460.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #ffffff;
+        margin-top: 40px;
+        font-family: 'Black Ops One', system-ui;
+    }
+
+    form {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: transparent;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+        color: #333333;
+    }
+
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 12px;
+        color: #333333;
+    }
+
+    
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #c7d5e0;
+    }
+
+    input[type="file"],
+    input[type="text"],
+    input[type="submit"] {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-bottom: 8px;
+        width: 100%; /* Enlarge image field */
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
+
+    input[type="submit"] {
+        background-color: #4e7ab5;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #346192;
+    }
+
+    img {
+        max-width: 100px;
+        max-height: 100px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    a {
+        text-decoration: none;
+        color: #4e7ab5;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .button-link {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #68b54e;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin-right: 10px;
+    }
+
+    .button-link1 {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #e33b0c;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+</style>
+
+<div class="container">
+    <h1>EQUIPMENTS</h1>
+
+    {% if data['updates'] %}
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th align="right">Equipment Image :</th>
+                <td>
+                    <img src="{{data['updates'][0]['image']}}" alt="">
+                    <input type="file" name="equp_image">
+                </td>
+            </tr>
+            <tr>
+                <th align="right">Equipment Name :</th>
+                <td>
+                    <input type="text" name="equp_name" value="{{data['updates'][0]['equp_name']}}">
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" name="update" value="UPDATE"></td>
+            </tr>
+        </table>
+    </form>
+    {% else %}
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <th align="right">Equipment Image :</th>
+                <td>
+                    <input type="file" name="equp_image" placeholder="" required>
+                </td>
+            </tr>
+            <tr>
+                <th align="right">Equipment Name :</th>
+                <td>
+                    <input type="text" name="equp_name" placeholder="Enter Equipment Name" required>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" name="submit" required></td>
+            </tr>
+        </table>
+    </form>
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>Slno</th>
+            <th>Equipment Photo</th>
+            <th>Equipment Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for i in data['equip'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td><img src="{{ i['image'] }}" alt=""></td>
+            <td>{{ i['equp_name'] }}</td>
+            <td><a class="button-link" href="?action=update&eqmt_id={{ i['eqmt_id'] }}">UPDATE</a>
+                <a class="button-link1" href="?action=delete&eqmt_id={{ i['eqmt_id'] }}">DELETE</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% include 'footer.html' %}

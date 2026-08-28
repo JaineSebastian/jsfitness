@@ -1,0 +1,161 @@
+{% include 'admin/admin_header.html' %}
+
+<style>
+    /* Your provided CSS style */
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("/static/img/1245460.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #ffffff;
+        font-family: 'Black Ops One', system-ui;
+        margin-top: 40px;
+    }
+
+    form {
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th {
+        background-color: transparent;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+        color: #333333;
+    }
+
+    th,
+    td {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 12px;
+        color: #333333;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #c7d5e0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-bottom: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4e7ab5;
+        color: #ffffff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #346192;
+    }
+
+    a {
+        text-decoration: none;
+        color: #4e7ab5;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #346192;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .btn-link {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #4e7ab5;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-link:hover {
+        background-color: #346192;
+        color: white;
+    }
+
+    .button-link {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #68b54e;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-link:hover {
+        background-color: #346192;
+        color: white;
+    }
+
+    .button-link1 {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #e33b0c;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .button-link1:hover {
+        background-color: #346192;
+        color: white;
+    }
+</style>
+
+<table border="1">
+    <tr>
+        <th>Slno</th>
+        <th>Name</th>
+        <th>Feedback</th>
+    </tr>
+    {% for i in data['feed'] %}
+    <tr>
+        <td>{{loop.index}}</td>
+        <td>{{i['name']}}</td>
+        <td>{{i['feedback']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% include 'footer.html' %}
